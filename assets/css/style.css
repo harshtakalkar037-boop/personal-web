@@ -1,0 +1,72 @@
+/* Updated color scheme - Blue theme */
+:root {
+  /**
+   * colors
+   */
+
+  /* gradient */
+  --bg-gradient-onyx: linear-gradient(
+    to bottom right, 
+    hsl(220, 60%, 25%) 3%, 
+    hsl(220, 45%, 20%) 97%
+  );
+  --bg-gradient-jet: linear-gradient(
+    to bottom right, 
+    hsla(220, 50%, 20%, 0.251) 0%, 
+    hsla(220, 45%, 15%, 0) 100%
+  ), hsl(220, 40%, 16%);
+  --bg-gradient-blue-1: linear-gradient(
+    to bottom right, 
+    hsl(210, 100%, 60%) 0%, 
+    hsla(210, 100%, 50%, 0.5) 50%
+  );
+  --bg-gradient-blue-2: linear-gradient(
+    135deg, 
+    hsla(210, 100%, 60%, 0.251) 0%, 
+    hsla(210, 100%, 50%, 0) 59.86%
+  ), hsl(220, 40%, 16%);
+  --border-gradient-onyx: linear-gradient(
+    to bottom right, 
+    hsl(220, 30%, 30%) 0%, 
+    hsla(220, 30%, 30%, 0) 50%
+  );
+  --text-gradient-blue: linear-gradient(
+    to right, 
+    hsl(210, 100%, 65%), 
+    hsl(200, 100%, 60%)
+  );
+
+  /* solid */
+  --jet: hsl(220, 30%, 25%);
+  --onyx: hsl(220, 35%, 20%);
+  --eerie-black-1: hsl(220, 40%, 16%);
+  --eerie-black-2: hsl(220, 35%, 15%);
+  --smoky-black: hsl(220, 50%, 10%);
+  --white-1: hsl(0, 0%, 100%);
+  --white-2: hsl(0, 0%, 98%);
+  --blue-crayola: hsl(210, 100%, 65%);
+  --vegas-blue: hsl(210, 70%, 55%);
+  --light-gray: hsl(0, 0%, 84%);
+  --light-gray-70: hsla(0, 0%, 84%, 0.7);
+  --bittersweet-shimmer: hsl(0, 43%, 51%);
+
+  /* Rest of the CSS remains the same, just updating color references */
+}
+
+/* Update all color references in the CSS to use the new blue theme */
+/* For example: */
+.icon-box {
+  color: var(--blue-crayola);
+  /* ... */
+}
+
+.article-title::after {
+  background: var(--text-gradient-blue);
+  /* ... */
+}
+
+.navbar-link.active {
+  color: var(--blue-crayola);
+}
+
+/* Continue updating all color references throughout the CSS file */
