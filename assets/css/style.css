@@ -516,10 +516,22 @@ input, textarea { font: inherit; color: inherit; }
 /*-----------------------------------*\
   TIMELINE
 \*-----------------------------------*/
+.subsection-title {
+  font-family: var(--ff-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 20px;
+}
+
+.subsection-title-spaced { margin-top: 48px; }
+
 .timeline {
   position: relative;
   padding-left: 28px;
   border-left: 1px solid var(--line);
+  margin-bottom: 8px;
 }
 
 .timeline-row {
