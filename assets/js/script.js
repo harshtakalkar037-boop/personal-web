@@ -1,44 +1,6 @@
-'use strict';
-
-// Footer year
-const yearEl = document.querySelector('[data-year]');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-// Mobile nav toggle
-const header = document.querySelector('.site-header');
-const navToggle = document.querySelector('[data-nav-toggle]');
-
-if (navToggle) {
-  navToggle.addEventListener('click', () => {
-    const isOpen = header.classList.toggle('nav-open');
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-  });
-}
-
-document.querySelectorAll('[data-nav-link]').forEach((link) => {
-  link.addEventListener('click', () => {
-    header.classList.remove('nav-open');
-    navToggle?.setAttribute('aria-expanded', 'false');
-  });
-});
-
-// Scroll-spy: highlight nav link for the section in view
-const sections = document.querySelectorAll('main .section, main .hero');
-const navLinks = document.querySelectorAll('[data-nav-link]');
-
-const spy = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const id = entry.target.getAttribute('id');
-      navLinks.forEach((link) => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-      });
-    });
-  },
-  { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
-);
-
-sections.forEach((section) => {
-  if (section.id) spy.observe(section);
-});
+const menu=document.querySelector('.menu'),nav=document.querySelector('#nav');menu?.addEventListener('click',()=>nav.classList.toggle('open'));document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+const tabs=document.querySelectorAll('.skill-tabs button'),panels=document.querySelectorAll('.skill-cloud');tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>x.classList.remove('active'));panels.forEach(x=>x.classList.remove('active'));t.classList.add('active');document.querySelector(`[data-panel="${t.dataset.tab}"]`)?.classList.add('active')}));
+const filters=document.querySelectorAll('.filters button'),projects=document.querySelectorAll('.project');filters.forEach(f=>f.addEventListener('click',()=>{filters.forEach(x=>x.classList.remove('active'));f.classList.add('active');const type=f.dataset.filter;projects.forEach(p=>p.classList.toggle('hidden',type!=='all'&&p.dataset.type!==type))}));
+const counters=document.querySelectorAll('[data-count]');const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,target=parseFloat(el.dataset.count);let start=0;const step=()=>{start+=target/45;if(start>=target){el.textContent=target.toFixed(target%1?2:0);return}el.textContent=start.toFixed(target%1?2:0);requestAnimationFrame(step)};step();io.unobserve(el)}),{threshold:.5});counters.forEach(x=>io.observe(x));
+const reveal=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity=1;e.target.style.transform='translateY(0)';reveal.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.section,.project,.build-grid article,.timeline article,.achievement-grid div').forEach((el,i)=>{el.style.opacity=0;el.style.transform='translateY(18px)';el.style.transition=`opacity .7s ease ${Math.min(i*.035,.25)}s,transform .7s ease ${Math.min(i*.035,.25)}s`;reveal.observe(el)});
+const card=document.querySelector('.system-card');window.addEventListener('pointermove',e=>{if(!card||innerWidth<900)return;const x=(e.clientX/innerWidth-.5)*8,y=(e.clientY/innerHeight-.5)*-8;card.style.transform=`perspective(900px) rotateY(${x}deg) rotateX(${y}deg)`});card?.addEventListener('mouseleave',()=>card.style.transform='');
